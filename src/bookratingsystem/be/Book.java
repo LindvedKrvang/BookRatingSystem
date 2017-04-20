@@ -23,6 +23,13 @@ public class Book {
         mAuthor = author;
     }
 
+    public Book(Book book) {
+        mISBNNumber = book.getISBNNumber();
+        mTitle = book.getTitle();
+        mYear = book.getYear();
+        mAuthor = book.getAuthor();
+    }
+
     public String getISBNNumber() {
         return mISBNNumber;
     }

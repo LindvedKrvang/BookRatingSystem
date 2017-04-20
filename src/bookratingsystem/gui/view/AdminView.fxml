@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="332.0" prefWidth="433.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.60" fx:controller="bookratingsystem.gui.controller.AdminViewController">
+   <children>
+      <VBox layoutX="14.0" layoutY="61.0" prefWidth="170.0">
+         <children>
+            <Label text="Add New Book">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label text="ISBN" />
+            <TextField fx:id="txtISBN" />
+            <Label text="Title" />
+            <TextField fx:id="txtTitle" />
+            <Label text="Year" />
+            <TextField fx:id="txtYear" />
+            <Label text="Author" />
+            <TextField fx:id="txtAuthor" />
+         </children>
+      </VBox>
+      <Label layoutX="125.0" layoutY="14.0" text="Admin page">
+         <font>
+            <Font name="System Bold Italic" size="32.0" />
+         </font>
+      </Label>
+      <Button layoutX="319.0" layoutY="266.0" mnemonicParsing="false" onAction="#handleGetBooksButton" prefWidth="100.0" text="Get Books">
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="199.0" layoutY="266.0" mnemonicParsing="false" onAction="#handleAddBookButton" prefWidth="100.0" text="Add Book">
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
