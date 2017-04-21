@@ -45,13 +45,12 @@ public class BookDAO {
     }
 
     public Book add(Book book) throws SQLException {
-        String sql = "INSERT INTO Books (ISBN, Title, Year, Author) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO Books (ISBN, Title, Author) VALUES (?,?,?)";
         try (Connection con = cm.getConnection()) {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, book.getISBNNumber());
             ps.setString(2, book.getTitle());
-            ps.setString(3, book.getYear());
-            ps.setString(4, book.getAuthor());
+            ps.setString(3, book.getAuthor());
 
             ps.executeUpdate();
             return new Book(book);
@@ -84,9 +83,8 @@ public class BookDAO {
     private Book getOneBook(ResultSet rs) throws SQLException {
         String ISBN = rs.getString("ISBN");
         String title = rs.getString("Title");
-        String year = rs.getString("Year");
         String author = rs.getString("Author");
 
-        return new Book(ISBN, title, year, author);
+        return new Book(ISBN, title, author);
     }
 }

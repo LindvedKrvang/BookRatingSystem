@@ -25,11 +25,7 @@ public class AdminViewController implements Initializable {
     @FXML
     private TextField txtISBN;
     @FXML
-    private TextField txtTitle;
-    @FXML
-    private TextField txtYear;
-    @FXML
-    private TextField txtAuthor;
+    private TextField txtAuthorAndTitle;
 
     private BookModel mBookModel;
 
@@ -48,8 +44,7 @@ public class AdminViewController implements Initializable {
     @FXML
     private void handleAddBookButton(ActionEvent event) {
         if (isDataValid()) {
-            mBookModel.addBookToDB(txtISBN.getText(), txtTitle.getText(),
-                    txtYear.getText(), txtAuthor.getText());
+            mBookModel.addBookToDB(txtISBN.getText(), txtAuthorAndTitle.getText());
             clearTxtFields();
         } else {
             System.out.println("Not valid data!");
@@ -63,22 +58,18 @@ public class AdminViewController implements Initializable {
         for (Book book : listOfBooks) {
             System.out.println("ISBN: " + book.getISBNNumber()
                     + "\nTitle: " + book.getTitle()
-                    + "\nYear: " + book.getYear()
                     + "\nAuthor: " + book.getAuthor()
                     + "\n");
         }
     }
 
     private boolean isDataValid() {
-        return (!txtISBN.getText().isEmpty() && !txtTitle.getText().isEmpty()
-                && !txtYear.getText().isEmpty() && !txtAuthor.getText().isEmpty());
+        return (!txtISBN.getText().isEmpty() && !txtAuthorAndTitle.getText().isEmpty());
     }
 
     private void clearTxtFields() {
         txtISBN.clear();
-        txtTitle.clear();
-        txtYear.clear();
-        txtAuthor.clear();
+        txtAuthorAndTitle.clear();
     }
 
 }

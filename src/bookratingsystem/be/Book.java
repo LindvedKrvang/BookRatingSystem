@@ -13,20 +13,17 @@ public class Book {
 
     private String mISBNNumber;
     private String mTitle;
-    private String mYear;
     private String mAuthor;
 
-    public Book(String ISBNNumber, String title, String year, String author) {
+    public Book(String ISBNNumber, String title, String author) {
         mISBNNumber = ISBNNumber;
         mTitle = title;
-        mYear = year;
         mAuthor = author;
     }
 
     public Book(Book book) {
         mISBNNumber = book.getISBNNumber();
         mTitle = book.getTitle();
-        mYear = book.getYear();
         mAuthor = book.getAuthor();
     }
 
@@ -36,10 +33,6 @@ public class Book {
 
     public String getTitle() {
         return mTitle;
-    }
-
-    public String getYear() {
-        return mYear;
     }
 
     public String getAuthor() {

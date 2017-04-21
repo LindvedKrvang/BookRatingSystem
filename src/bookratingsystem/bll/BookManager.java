@@ -41,7 +41,8 @@ public class BookManager {
      * @return
      */
     public Book createBook(String... bookData) {
-        return new Book(bookData[0], bookData[1], bookData[2], bookData[3]);
+        String[] AuthorAndTitle = bookData[1].split(",");
+        return new Book(bookData[0], AuthorAndTitle[1], AuthorAndTitle[0]);
     }
 
     /**
