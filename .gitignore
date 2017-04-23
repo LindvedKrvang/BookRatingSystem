@@ -4,6 +4,9 @@
 ### YOUR_PROJECT ###
 !jfoenix.jar
 BookRatingSystemDB.cfg
+ConnectionManager.java
+Volunteer.java
+VolunteerController.java
 
 ### NetBeans ###
 nbproject/private/
