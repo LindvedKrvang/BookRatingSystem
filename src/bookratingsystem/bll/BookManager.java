@@ -6,11 +6,8 @@
 package bookratingsystem.bll;
 
 import bookratingsystem.be.Book;
-import bookratingsystem.dal.BookDAO;
-import java.sql.SQLException;
+import bookratingsystem.dal.FacadeDAL;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -18,20 +15,14 @@ import java.util.logging.Logger;
  */
 public class BookManager {
 
-    private final BookDAO mBookDAO;
+    private final FacadeDAL mFacadeDAL;
 
     public BookManager() {
-        mBookDAO = BookDAO.getInstance();
+        mFacadeDAL = new FacadeDAL();
     }
 
     public Book addBook(Book book) {
-        try {
-            return mBookDAO.add(book);
-        } catch (SQLException ex) {
-            System.out.println("Couldn't add book to database!");
-            Logger.getLogger(BookManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
+        return mFacadeDAL.addBook(book);
     }
 
     /**
@@ -51,7 +42,7 @@ public class BookManager {
      * @return
      */
     public List<Book> getBooks() {
-        return mBookDAO.getBooks();
+        return mFacadeDAL.getBooks();
     }
 
 }
