@@ -26,8 +26,10 @@ public class AdminViewController implements Initializable {
     private TextField txtISBN;
     @FXML
     private TextField txtAuthorAndTitle;
+    @FXML
+    private TextField txtUserAndRating;
 
-    private BookModel mBookModel;
+    private final BookModel mBookModel;
 
     public AdminViewController() {
         mBookModel = BookModel.getInstance();
@@ -70,6 +72,14 @@ public class AdminViewController implements Initializable {
     private void clearTxtFields() {
         txtISBN.clear();
         txtAuthorAndTitle.clear();
+    }
+
+    @FXML
+    private void handleAddUserButton(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleGetRatingsButton(ActionEvent event) {
     }
 
 }

@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bookratingsystem.dal;
+package bookratingsystem.dal.bookDAOFolder;
 
 import bookratingsystem.be.Book;
+import bookratingsystem.dal.DBConnectionManager;
+import bookratingsystem.dal.IDAOController;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -26,7 +26,7 @@ public class BookController implements IDAOController<Book> {
         try {
             cm = DBConnectionManager.getInstance();
         } catch (IOException ex) {
-            Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Failed to connect to database!\n" + ex.getMessage());
         }
         bookDAO = BookDAO.getInstance();
     }

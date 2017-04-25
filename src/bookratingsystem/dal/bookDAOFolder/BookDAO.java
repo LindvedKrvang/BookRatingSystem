@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bookratingsystem.dal;
+package bookratingsystem.dal.bookDAOFolder;
 
 import bookratingsystem.be.Book;
 import java.sql.Connection;
@@ -29,9 +29,15 @@ public class BookDAO {
         return mInstance;
     }
 
-    private BookDAO() {
-    }
-
+    /**
+     * Adds a single Book to the database. The Book that is added is the one
+     * that is parsed.
+     *
+     * @param con
+     * @param book
+     * @return
+     * @throws SQLException
+     */
     public Book add(Connection con, Book book) throws SQLException {
         String sql = "INSERT INTO Books (ISBN, Title, Author) VALUES (?,?,?)";
         PreparedStatement ps = con.prepareStatement(sql);
@@ -43,6 +49,13 @@ public class BookDAO {
         return new Book(book);
     }
 
+    /**
+     * Returns a List of all the Books in the database.
+     *
+     * @param con
+     * @return
+     * @throws SQLException
+     */
     public List<Book> getBooks(Connection con) throws SQLException {
         List<Book> listOfBooks = new ArrayList<>();
         String sql = "SELECT * FROM Books";

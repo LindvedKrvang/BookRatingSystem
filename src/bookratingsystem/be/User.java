@@ -5,6 +5,9 @@
  */
 package bookratingsystem.be;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Rasmus
@@ -12,6 +15,35 @@ package bookratingsystem.be;
 public class User {
 
     private String mName;
-    private String mAccount;
+    private int mId;
+    private List<Integer> mListOfRatings;
+
+    public User(String name, int id) {
+        mName = name;
+        mId = id;
+        mListOfRatings = new ArrayList<>();
+    }
+
+    public User(User user) {
+        mName = user.getName();
+        mId = user.getId();
+        mListOfRatings = new ArrayList<>();
+    }
+
+    public String getName() {
+        return mName;
+    }
+
+    public int getId() {
+        return mId;
+    }
+
+    public void addRating(int rating) {
+        mListOfRatings.add(rating);
+    }
+
+    public List<Integer> getRatings() {
+        return mListOfRatings;
+    }
 
 }
