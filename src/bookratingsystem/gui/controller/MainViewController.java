@@ -5,16 +5,19 @@
  */
 package bookratingsystem.gui.controller;
 
+import bookratingsystem.be.User;
+import bookratingsystem.gui.model.UserModel;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -26,14 +29,41 @@ public class MainViewController implements Initializable {
 
     @FXML
     private Button btnAdmin;
+    @FXML
+    private ListView<User> lstUsers;
+
+    private final UserModel mUserModel;
+
+    public MainViewController() {
+        mUserModel = UserModel.getInstance();
+
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        setCellFactory();
+        lstUsers.setItems(mUserModel.getListOfUsers());
+    }
+
+    /**
+     * Sets the cellFactory for the list of Users.
+     */
+    private void setCellFactory() {
+        lstUsers.setCellFactory(u -> new ListCell<User>() {
+            @Override
+            protected void updateItem(User item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item == null) {
+                    setText(null);
+                } else {
+                    setText(item.getName());
+                }
+            }
+        });
     }
 
     @FXML
-    private void handleAdminButton(ActionEvent event) throws IOException {
+    private void handleAdminButton() throws IOException {
         Stage primStage = (Stage) btnAdmin.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/bookratingsystem/gui/view/AdminView.fxml"));
         Parent root = loader.load();

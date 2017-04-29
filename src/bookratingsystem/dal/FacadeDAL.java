@@ -77,4 +77,13 @@ public class FacadeDAL {
         mRatingsController.addRating(userID, bookISBN, ratings);
     }
 
+    /**
+     * Returns a List of Users with their ratings.
+     *
+     * @return
+     */
+    public List<User> getUsers() {
+        return mRatingsController.addRatingsToUsers(mUserController.get());
+    }
+
 }

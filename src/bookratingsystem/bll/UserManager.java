@@ -7,6 +7,7 @@ package bookratingsystem.bll;
 
 import bookratingsystem.be.User;
 import bookratingsystem.dal.FacadeDAL;
+import java.util.List;
 
 /**
  *
@@ -22,6 +23,10 @@ public class UserManager {
 
     public User addUser(User user) {
         return mFacadeDAL.addUser(user);
+    }
+
+    public List<User> getUsers() {
+        return mFacadeDAL.getUsers();
     }
 
 }
