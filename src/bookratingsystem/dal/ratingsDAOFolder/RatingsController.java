@@ -29,15 +29,24 @@ public class RatingsController {
         ratingsDAO = new RatingsDAO();
     }
 
-    public void addRating(int userId, String[] bookNames, int[] ratings) {
+    public void addRating(int userId, String[] bookISBN, int[] ratings) {
         Connection con;
         try {
             con = cm.getConnection();
             con.setAutoCommit(false);
-            for (int i = 1; i < bookNames.length; i++) {
-                ratingsDAO.addRating(con, userId, bookNames[i], ratings[i]);
+            boolean errorHappened = false;
+            for (int i = 1; i < bookISBN.length; i++) {
+                if (!ratingsDAO.addRating(con, userId, bookISBN[i], ratings[i])) {
+//                    errorHappened = true;
+                }
             }
-            con.commit();
+            if (errorHappened) {
+                con.rollback();
+                System.out.println("Rollback executed!");
+            } else {
+                con.commit();
+                System.out.println("Succesfully added ratings to database!");
+            }
         } catch (SQLException ex) {
             System.out.println("Failed to add rating to database!\n" + ex.getMessage());
 

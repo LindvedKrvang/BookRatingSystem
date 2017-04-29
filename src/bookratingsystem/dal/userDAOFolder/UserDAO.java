@@ -20,17 +20,18 @@ import java.util.List;
 public class UserDAO {
 
     public User addUser(Connection con, User user) throws SQLException {
-        String sql = "INSERT INTO User (Name) VALUES (?)";
+        String sql = "INSERT INTO Users (Name) VALUES (?)";
         PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
         ps.setString(1, user.getName());
-        ps.executeQuery();
+        ps.executeUpdate();
         ResultSet generatedKeys = ps.getGeneratedKeys();
+        generatedKeys.next();
         int id = generatedKeys.getInt(1);
         return new User(user.getName(), id);
     }
 
     public List<User> getAllUsers(Connection con) throws SQLException {
-        String sql = "SELECT * FROM User";
+        String sql = "SELECT * FROM Users";
         PreparedStatement ps = con.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         List<User> listOfUsers = new ArrayList<>();

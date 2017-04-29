@@ -18,7 +18,7 @@ public class BookManager {
     private final FacadeDAL mFacadeDAL;
 
     public BookManager() {
-        mFacadeDAL = new FacadeDAL();
+        mFacadeDAL = FacadeDAL.getInstance();
     }
 
     public Book addBook(Book book) {

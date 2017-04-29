@@ -18,6 +18,12 @@ public class User {
     private int mId;
     private List<Integer> mListOfRatings;
 
+    public User(String name) {
+        mName = name;
+        mId = 0;
+        mListOfRatings = new ArrayList<>();
+    }
+
     public User(String name, int id) {
         mName = name;
         mId = id;

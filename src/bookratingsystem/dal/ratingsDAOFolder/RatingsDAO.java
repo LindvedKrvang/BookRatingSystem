@@ -18,14 +18,14 @@ import java.util.List;
  */
 public class RatingsDAO {
 
-    public void addRating(Connection con, int userId, String bookName, int rating) throws SQLException {
+    public boolean addRating(Connection con, int userId, String bookISBN, int rating) throws SQLException {
         String sql = "INSERT INTO BookRatings (UserId, BookId, Rating) VALUES (?,?,?)";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1, userId);
-        ps.setString(2, bookName);
+        ps.setString(2, bookISBN);
         ps.setInt(3, rating);
 
-        ps.executeUpdate();
+        return ps.execute();
     }
 
     public List<Integer> getRatings(Connection con, int userId) throws SQLException {
