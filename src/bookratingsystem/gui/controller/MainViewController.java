@@ -31,6 +31,8 @@ public class MainViewController implements Initializable {
     private Button btnAdmin;
     @FXML
     private ListView<User> lstUsers;
+    @FXML
+    private ListView<?> lstRatings;
 
     private final UserModel mUserModel;
 
